@@ -11,8 +11,11 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,8 +27,7 @@ public class OrderDAO {
     StaffDAO staff_dAo = new StaffDAO();
     StoreDAO store_dAo = new StoreDAO();
 
-    public List<Order> getAll(int index) {
-        int size = 10;
+    public List<Order> getAll(int index,int size) {
         String query = "SELECT * FROM sales.orders as ors\n"
                 + "ORDER BY ors.order_id\n"
                 + "OFFSET (?-1)*? ROWS FETCH NEXT ? ROWS ONLY";
@@ -54,10 +56,26 @@ public class OrderDAO {
         } catch (Exception e) {
         }
         return null;
+    } public int countAll() {
+         String sql = "SELECT COUNT(*) as rownum FROM sales.orders as ors";
+        try (Connection conn = SQLconnection.getConnection();
+                PreparedStatement ps = (conn != null) ? conn.prepareStatement(sql) : null;) {
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                return rs.getInt("rownum");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
         OrderDAO dAO = new OrderDAO();
-        System.out.println(dAO.getAll(2));
+        System.out.println(dAO.countAll());
     }
-}
+
+   
+    }

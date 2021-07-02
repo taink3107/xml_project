@@ -5,11 +5,11 @@
  */
 package controller;
 
-import entity.Order;
 import entity.Orders;
+import helper.HtmlHelper;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import service.OrderService;
 
 /**
@@ -38,21 +38,30 @@ public class OrderController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        OrderService service = new OrderService();
         try {
-            int index = 1;
-            if(request.getParameter("index") != null){
-                index = Integer.valueOf(request.getParameter("index"));
+            String url1 = "http://localhost:8084/RSS_project/order";
+            JAXBContext jaxbContext = JAXBContext.newInstance(Orders.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            OrderService service = new OrderService();
+            int pagesize = 6;
+            String raw_pageindex = request.getParameter("page");
+            if (raw_pageindex == null) {
+                raw_pageindex = "1";
             }
-            List<Order> order = service.getAllPagging(index);
-            Orders orders = new Orders(order);
-            JAXBContext context = JAXBContext.newInstance(Orders.class);
-            Marshaller marshaller = context.createMarshaller();
-            marshaller.marshal(orders, response.getOutputStream());
-        } catch (JAXBException ex) {
-            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            int pageindex = Integer.parseInt(raw_pageindex);
 
+            int count = service.count();
+            int pagecount = (count % pagesize == 0) ? count / pagesize : count / pagesize + 1;
+            url1 = url1.concat("?index="+pageindex);
+            url1 = url1.concat("&size="+pagesize);
+            URL url = new URL(url1);
+            Orders orders = (Orders) jaxbUnmarshaller.unmarshal(url);
+            request.setAttribute("pagging", HtmlHelper.pager(pageindex, pagecount, 2));
+            request.setAttribute("list", orders.getOrders());
+            request.getRequestDispatcher("manageOrder.jsp").forward(request, response);
+        } catch (JAXBException ex) {
+            Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,7 +76,7 @@ public class OrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
