@@ -23,8 +23,12 @@ public class OrderService{
 
     OrderDAO dAO = new OrderDAO();
 
-    public List<Order> getAllPagging(int pageIndex) {
-        return dAO.getAll(pageIndex);
+    public List<Order> getAllPagging(int pageIndex,int pageSize) {
+        return dAO.getAll(pageIndex,pageSize);
+    }
+
+    public int count() {
+        return dAO.countAll();
     }
 
 }
