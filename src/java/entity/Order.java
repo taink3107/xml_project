@@ -6,6 +6,7 @@
 package entity;
 
 import java.sql.Date;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,9 +25,17 @@ public class Order {
     private String required_date;
     private String shipped_date;
     private int order_status;
-
+    private List<OrderItem> items;
     public int getOrder_id() {
         return order_id;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
     public void setOrder_id(int order_id) {
@@ -96,7 +105,9 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "order_id=" + order_id + ", customer=" + customer + ", store=" + store + ", staff=" + staff + ", order_date=" + order_date + ", required_date=" + required_date + ", shipped_date=" + shipped_date + ", order_status=" + order_status + '}'+"\n";
+        return "Order{" + "order_id=" + order_id + "\n, customer=" + customer + "\n, store=" + store + "\n, staff=" + staff + "\n, order_date=" + order_date + "\n, required_date=" + required_date + "\n, shipped_date=" + shipped_date + "\n, order_status=" + order_status + "\n, items=" + items + '}';
     }
+
+  
     
 }

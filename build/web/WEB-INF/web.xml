@@ -12,6 +12,14 @@
         <servlet-name>OrderRss</servlet-name>
         <servlet-class>controller.OrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderDetailRSS</servlet-name>
+        <servlet-class>controller.OrderDetailRSS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Detail</servlet-name>
+        <servlet-class>controller.Detail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>OrderController</servlet-name>
         <url-pattern>/order</url-pattern>
@@ -26,6 +34,14 @@
     <servlet-mapping>
         <servlet-name>OrderRss</servlet-name>
         <url-pattern>/oder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderDetailRSS</servlet-name>
+        <url-pattern>/detailRSS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Detail</servlet-name>
+        <url-pattern>/detail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

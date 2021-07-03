@@ -5,26 +5,30 @@
  */
 package entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author taink
  */
+@XmlRootElement(name = "item")
 public class OrderItem {
-    private Order order;
+    private int order_id;
     private int item_id;
     private Product product;
     private int quantity;
     private double list_price;
     private double discount;
 
-    public Order getOrder() {
-        return order;
+    public int getOrder_id() {
+        return order_id;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
+    
     public int getItem_id() {
         return item_id;
     }
@@ -67,7 +71,7 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "OrderItem{" + "order=" + order + ", item_id=" + item_id + ", product=" + product + ", quantity=" + quantity + ", list_price=" + list_price + ", discount=" + discount + '}';
+        return "OrderItem"+", item_id=" + item_id + ", product=" + product + ", quantity=" + quantity + ", list_price=" + list_price + ", discount=" + discount + '}';
     }
     
     

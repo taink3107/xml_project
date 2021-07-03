@@ -6,17 +6,19 @@
 package entity;
 
 import java.time.Year;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author taink
  */
+@XmlRootElement(name = "product")
 public class Product {
     private int product_id;
     private String product_name;
     private Brand brand;
     private Category category;
-    private Year model_year;
+    private int model_year;
     private double list_price;
 
     public int getProduct_id() {
@@ -51,13 +53,15 @@ public class Product {
         this.category = category;
     }
 
-    public Year getModel_year() {
+    public int getModel_year() {
         return model_year;
     }
 
-    public void setModel_year(Year model_year) {
+    public void setModel_year(int model_year) {
         this.model_year = model_year;
     }
+
+    
 
     public double getList_price() {
         return list_price;

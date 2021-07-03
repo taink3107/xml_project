@@ -30,5 +30,8 @@ public class OrderService{
     public int count() {
         return dAO.countAll();
     }
+    public Order getOneById(int id){
+        return dAO.getOne(id);
+    }
 
 }

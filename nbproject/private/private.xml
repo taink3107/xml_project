@@ -3,18 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/detail.jsp</file>
             <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/Order.java</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/Category.java</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/redirect.jsp</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/Store.java</file>
+            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/manageProduct.jsp</file>
             <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/Product.java</file>
+            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/narbar.jsp</file>
             <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/OrderItem.java</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/Staff.java</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/Customer.java</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/controller/RSSController.java</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/index.jsp</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/entity/Brand.java</file>
-            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/helper/SQLconnection.java</file>
+            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/manageStore.jsp</file>
+            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/manageCustomer.jsp</file>
+            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/web/manageStaff.jsp</file>
+            <file>file:/E:/hoc/XML/New%20Folder/RSS_project/src/java/dao/ProductDAO.java</file>
         </group>
     </open-files>
 </project-private>

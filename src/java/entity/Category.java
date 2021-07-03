@@ -5,10 +5,13 @@
  */
 package entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author taink
  */
+@XmlRootElement(name = "category")
 public class Category {
     private int category_id;
     private String category_name;
